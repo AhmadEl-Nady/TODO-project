@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My To-Do List</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>My To-Do List</h1>
+
+        <div class="input-area">
+
+            <!-- Task name -->
+            <input 
+                id="taskInput" 
+                type="text" 
+                placeholder="Type a task..."
+            >
+
+            <!-- Category -->
+            <select id="categoryInput">
+
+                <option value="Study">📚 Study</option>
+
+                <option value="Sport">⚽ Sport</option>
+
+                <option value="Games">🎮 Games</option>
+
+                <option value="Family">👨‍👩‍👧 Family Time</option>
+
+                <option value="Chores">🏠 Chores</option>
+
+                <option value="Hobbies">🎨 Hobbies</option>
+
+                <option value="Work">💼 Work</option>
+
+                <option value="Other">📌 Other</option>
+
+            </select>
+
+            <!-- Deadline -->
+            <input 
+                id="deadlineInput" 
+                type="datetime-local"
+            >
+
+            <!-- Add task button -->
+            <button id="addTaskBtn">
+                Add Task
+            </button>
+
+        </div>
+
+        <!-- Task counter -->
+        <p id="taskCount">
+            Tasks: 0
+        </p>
+
+        <!-- Tasks will appear here -->
+        <ul id="taskList"></ul>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>
