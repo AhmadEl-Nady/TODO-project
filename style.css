@@ -3,6 +3,9 @@ body {
     background-color: #e8f0fe;
     margin: 0;
     padding: 0;
+
+    /* Page animation */
+    animation: pageFadeIn 0.7s ease;
 }
 
 .container {
@@ -12,11 +15,16 @@ body {
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+
+    /* Container animation */
+    animation: containerAppear 0.6s ease;
 }
 
 h1 {
     text-align: center;
     color: #333;
+
+    animation: titleAppear 0.8s ease;
 }
 
 .input-area {
@@ -32,19 +40,34 @@ h1 {
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 6px;
+
+    transition: 0.2s ease;
 }
 
-#categoryInput {
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+#taskInput:focus {
+    border-color: #2196F3;
+    outline: none;
+    box-shadow: 0 0 6px rgba(33, 150, 243, 0.3);
+    transform: scale(1.01);
 }
 
+#categoryInput,
 #deadlineInput {
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 6px;
+
+    transition: 0.2s ease;
 }
+
+#categoryInput:focus,
+#deadlineInput:focus {
+    border-color: #2196F3;
+    outline: none;
+    box-shadow: 0 0 6px rgba(33, 150, 243, 0.3);
+}
+
+/* Add button */
 
 #addTaskBtn {
     padding: 12px 18px;
@@ -53,15 +76,24 @@ h1 {
     border: none;
     border-radius: 6px;
     cursor: pointer;
+
+    transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 #addTaskBtn:hover {
     background-color: #45a049;
+    transform: scale(1.05);
+}
+
+#addTaskBtn:active {
+    transform: scale(0.95);
 }
 
 #taskCount {
     color: #666;
     font-size: 14px;
+
+    transition: transform 0.2s ease;
 }
 
 #taskList {
@@ -80,6 +112,16 @@ h1 {
     flex-wrap: wrap;
     gap: 8px;
     align-items: center;
+
+    /* New task animation */
+    animation: taskAppear 0.35s ease;
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#taskList li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
 .task-category {
@@ -88,12 +130,20 @@ h1 {
     border-radius: 5px;
     font-size: 13px;
     white-space: nowrap;
+
+    transition: transform 0.2s ease;
+}
+
+.task-category:hover {
+    transform: scale(1.05);
 }
 
 .task-text {
     flex: 1;
     min-width: 120px;
     font-size: 16px;
+
+    transition: color 0.3s ease, opacity 0.3s ease;
 }
 
 .task-deadline {
@@ -105,10 +155,16 @@ h1 {
     margin-top: 5px;
 }
 
+/* Completed task animation */
+
 .completed {
     text-decoration: line-through;
     color: #888;
+
+    animation: completeTask 0.3s ease;
 }
+
+/* Complete button */
 
 .complete-btn {
     background-color: #2196F3;
@@ -118,11 +174,20 @@ h1 {
     margin-right: 5px;
     border-radius: 4px;
     cursor: pointer;
+
+    transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .complete-btn:hover {
     background-color: #1976D2;
+    transform: scale(1.05);
 }
+
+.complete-btn:active {
+    transform: scale(0.92);
+}
+
+/* Delete button */
 
 .delete-btn {
     background-color: #f44336;
@@ -131,8 +196,99 @@ h1 {
     padding: 7px 10px;
     border-radius: 4px;
     cursor: pointer;
+
+    transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .delete-btn:hover {
     background-color: #d32f2f;
+    transform: scale(1.05);
+}
+
+.delete-btn:active {
+    transform: scale(0.92);
+}
+
+/* Animations */
+
+@keyframes pageFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes containerAppear {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes titleAppear {
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes taskAppear {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes completeTask {
+    from {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+    .container {
+        width: calc(100% - 40px);
+        margin: 20px auto;
+        padding: 20px;
+    }
+
+    .input-area {
+        flex-direction: column;
+    }
+
+    #taskInput,
+    #categoryInput,
+    #deadlineInput,
+    #addTaskBtn {
+        width: 100%;
+        box-sizing: border-box;
+    }
 }
