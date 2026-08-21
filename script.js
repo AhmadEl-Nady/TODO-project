@@ -54,8 +54,18 @@ function addTask() {
     deleteBtn.classList.add("delete-btn");
 
     deleteBtn.addEventListener("click", function () {
-        li.remove();
-        updateTaskCount();
+
+        // Delete animation
+        li.style.transition =
+            "opacity 0.3s ease, transform 0.3s ease";
+
+        li.style.opacity = "0";
+        li.style.transform = "translateX(30px)";
+
+        setTimeout(function () {
+            li.remove();
+            updateTaskCount();
+        }, 300);
     });
 
     // Add everything
